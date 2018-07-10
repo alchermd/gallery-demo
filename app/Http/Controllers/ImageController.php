@@ -37,7 +37,17 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'created_by' => 'required|min:3|',
+            'file' => 'required|mimes:jpg,jpeg,png',
+        ]);
+
+        $path = $request->file('file')->store('public');
+        $validatedData['url'] = $path;
+
+        Image::create($validatedData);
+
+        return redirect('/');
     }
 
     /**
