@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', '/images');
+Route::resource('/images', 'ImageController');
+
+Route::view('/upload', 'upload');
