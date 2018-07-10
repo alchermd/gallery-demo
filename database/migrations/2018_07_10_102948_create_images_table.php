@@ -18,6 +18,7 @@ class CreateImagesTable extends Migration
             $table->string('created_by');
             $table->text('url');
             $table->text('description')->nullable();
+            $table->timestamps();
         });
     }
 
